@@ -43,7 +43,13 @@ export default function RestaurantsList(props) {
           </li>
           <ul className={restaurant.name.replace(/ /g, '') + " hidden"}>
             {restaurant.reviewers.map((reviewer) => (
-              <li key={reviewer.name}>{reviewer.review}</li>
+              <li className="flex justify-between border-b py-4 px-4 mb-4 text-left text-sm bg-gray-50 rounded shadow" key={reviewer.name}>
+                {reviewer.review}
+                <span className="text-xs">
+                  by: {reviewer.name}
+                </span>
+              
+              </li>
             ))}
           </ul>
         </>
