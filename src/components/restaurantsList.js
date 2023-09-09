@@ -31,6 +31,7 @@ export default function RestaurantsList(props) {
             <div className="flex w-16 gap-x-2.5">
               <dt>
                 <span className="sr-only">Total reviews</span>
+                <ChatBubbleLeftIcon className="h-6 w-6 text-gray-400" aria-hidden="true" />
               </dt>
               <dd className="text-sm leading-6 text-gray-900">{restaurant.reviewers.length}</dd>
             </div>
