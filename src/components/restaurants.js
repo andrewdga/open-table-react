@@ -1,6 +1,20 @@
 import RestaurantsList from "./restaurantsList"
+import { useEffect, useState } from "react"
+
+
 export default function Restaurants() {
-  const restaurants = [
+  const [restaurants, setRestaurants] = useState([])
+  const fetchRestaurants = async () => {
+    const response = await fetch('http://localhost:5000/restaurants')
+    const data = await response.json()
+    setRestaurants(data)
+  }
+
+  useEffect(() => {
+    fetchRestaurants()
+  }, []);
+
+  const xrestaurants = [
     {
       name: 'The Golden Apple',
       location: 'San Francisco, CA',
