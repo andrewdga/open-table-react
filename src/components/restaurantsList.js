@@ -1,9 +1,16 @@
-import { ChatBubbleLeftIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
+import { ChatBubbleLeftIcon } from '@heroicons/react/24/outline'
+import { useState } from "react"
+
 
 export default function RestaurantsList(props) {
-  function showReview(event) {
-    console.log('clicked', event.target)
-    document.querySelector('.' + event.target.innerText.replace(/ /g, '')).classList.toggle('hidden')
+  const [showReviewForRestaurant, setShowReviewForRestaurant] = useState(null)
+
+  function toggleReview(restaurantName) {
+    if (showReviewForRestaurant === restaurantName) {
+      setShowReviewForRestaurant(null)
+    } else {
+      setShowReviewForRestaurant(restaurantName)
+    }
   }
 
   return (
@@ -15,7 +22,7 @@ export default function RestaurantsList(props) {
             className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap"
           >
             <div>
-              <p className="hover:underline text-sm font-semibold leading-6 text-gray-900" onClick={showReview}>
+              <p className="hover:underline text-sm font-semibold leading-6 text-gray-900" onClick={function() { toggleReview(restaurant.name)}}>
                 {restaurant.name}
               </p>
             </div>
@@ -41,17 +48,19 @@ export default function RestaurantsList(props) {
               </div>
             </dl>
           </li>
-          <ul className={restaurant.name.replace(/ /g, '') + " hidden"}>
-            {restaurant.reviewers.map((reviewer) => (
-              <li className="flex justify-between border-b py-4 px-4 mb-4 text-left text-sm bg-gray-50 rounded shadow" key={reviewer.name}>
-                {reviewer.review}
-                <span className="text-xs">
-                  by: {reviewer.name}
-                </span>
-              
-              </li>
-            ))}
-          </ul>
+          { showReviewForRestaurant === restaurant.name && (
+            <ul>
+              {restaurant.reviewers.map((reviewer) => (
+                <li className="flex justify-between border-b py-4 px-4 mb-4 text-left text-sm bg-gray-50 rounded shadow" key={reviewer.name}>
+                  {reviewer.review}
+                  <span className="text-xs">
+                    by: {reviewer.name}
+                  </span>
+                
+                </li>
+              ))}
+            </ul>
+          )}
         </>
         ))}
       </ul>
