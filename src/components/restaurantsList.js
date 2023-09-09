@@ -3,6 +3,7 @@ import { ChatBubbleLeftIcon, CheckCircleIcon } from '@heroicons/react/24/outline
 export default function RestaurantsList(props) {
   function showReview(event) {
     console.log('clicked', event.target)
+    document.querySelector('.' + event.target.innerText.replace(/ /g, '')).classList.toggle('hidden')
   }
 
   return (
@@ -40,7 +41,7 @@ export default function RestaurantsList(props) {
               </div>
             </dl>
           </li>
-          <ul>
+          <ul className={restaurant.name.replace(/ /g, '') + " hidden"}>
             {restaurant.reviewers.map((reviewer) => (
               <li key={reviewer.name}>{reviewer.review}</li>
             ))}
