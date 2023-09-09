@@ -3,15 +3,6 @@ import { useState } from "react"
 
 
 export default function RestaurantsList(props) {
-  const [showReviewForRestaurant, setShowReviewForRestaurant] = useState(null)
-
-  function toggleReview(restaurantName) {
-    if (showReviewForRestaurant === restaurantName) {
-      setShowReviewForRestaurant(null)
-    } else {
-      setShowReviewForRestaurant(restaurantName)
-    }
-  }
 
   return (
     <ul role="list" className="divide-y divide-gray-100">
@@ -22,7 +13,7 @@ export default function RestaurantsList(props) {
             className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap"
           >
             <div>
-              <p className="hover:underline text-sm font-semibold leading-6 text-gray-900" onClick={function() { toggleReview(restaurant.name)}}>
+              <p className="hover:underline text-sm font-semibold leading-6 text-gray-900" onClick={function() { props.toggleReview(restaurant)}}>
                 {restaurant.name}
               </p>
             </div>
@@ -48,19 +39,6 @@ export default function RestaurantsList(props) {
               </div>
             </dl>
           </li>
-          { showReviewForRestaurant === restaurant.name && (
-            <ul>
-              {restaurant.reviewers.map((reviewer) => (
-                <li className="flex justify-between border-b py-4 px-4 mb-4 text-left text-sm bg-gray-50 rounded shadow" key={reviewer.name}>
-                  {reviewer.review}
-                  <span className="text-xs">
-                    by: {reviewer.name}
-                  </span>
-                
-                </li>
-              ))}
-            </ul>
-          )}
         </>
         ))}
       </ul>
