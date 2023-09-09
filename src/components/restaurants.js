@@ -1,12 +1,19 @@
+import RestaurantsList from "./restaurantsList"
 export default function Restaurants() {
+  const restaurants = [
+    { name: 'The Golden Apple', location: 'San Francisco, CA' },
+    { name: 'Dumpling House', location: 'Portland, OR' },
+    { name: 'The Salty Pig', location: 'Boston, MA' },
+    { name: 'The Noodle Shop', location: 'New York, NY' },
+    { name: 'The Blue Corn', location: 'Austin, TX' }
+  ]
+
   return (
     <div className="bg-gray-100">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold text-blue-900">Our Restaurants</h2>
-          <p className="mt-4 text-lg text-gray-500">
-            Nullam risus blandit ac aliquam justo ipsum. Quam mauris volNullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcuutpat massa dictumst amet. Sapien tortor
-          </p>
+          <h2 className="text-3xl font-extrabold text-gray-900">Our Restaurants</h2>
+          <RestaurantsList restaurants={restaurants} />
         </div>
       </div>
     </div>
