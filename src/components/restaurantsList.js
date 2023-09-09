@@ -15,31 +15,26 @@ export default function RestaurantsList(props) {
               </a>
             </p>
           </div>
-          {/* <dl className="flex w-full flex-none justify-between gap-x-8 sm:w-auto">
+          <dl className="flex w-full flex-none justify-between gap-x-8 sm:w-auto">
             <div className="flex -space-x-0.5">
               <dt className="sr-only">Commenters</dt>
-              {discussion.commenters.map((commenter) => (
-                <dd key={commenter.id}>
+              {restaurant.reviewers.map((reviewer) => (
+                <dd key={reviewer.name}>
                   <img
                     className="h-6 w-6 rounded-full bg-gray-50 ring-2 ring-white"
-                    src={commenter.imageUrl}
-                    alt={commenter.name}
+                    src={reviewer.imageUrl}
+                    alt={reviewer.name}
                   />
                 </dd>
               ))}
             </div>
             <div className="flex w-16 gap-x-2.5">
               <dt>
-                <span className="sr-only">Total comments</span>
-                {discussion.status === 'resolved' ? (
-                  <CheckCircleIcon className="h-6 w-6 text-gray-400" aria-hidden="true" />
-                ) : (
-                  <ChatBubbleLeftIcon className="h-6 w-6 text-gray-400" aria-hidden="true" />
-                )}
+                <span className="sr-only">Total reviews</span>
               </dt>
-              <dd className="text-sm leading-6 text-gray-900">{discussion.totalComments}</dd>
+              <dd className="text-sm leading-6 text-gray-900">{restaurant.reviewers.length}</dd>
             </div>
-          </dl> */}
+          </dl>
         </li>
       ))}
     </ul>
